@@ -10,7 +10,6 @@ export {
   InicioDocenteScreen,
   InicioEstudianteScreen,
   LeccionesScreen,
-  LoginScreen,
 } from './screens/PlaceholderScreens';
 
 export function QuimicaHomeScreen() {

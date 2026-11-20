@@ -11,18 +11,6 @@ function PlaceholderScreen({ children, message }) {
   );
 }
 
-export function LoginScreen({ navigation }) {
-  return (
-    <PlaceholderScreen message="Inicio de sesión pendiente. Elige un recorrido de prueba.">
-      <Button
-        title="Probar como estudiante"
-        onPress={() => navigation.navigate('InicioEstudiante')}
-      />
-      <Button title="Probar como docente" onPress={() => navigation.navigate('InicioDocente')} />
-    </PlaceholderScreen>
-  );
-}
-
 function InicioScreen({ navigation, message }) {
   return (
     <PlaceholderScreen message={message}>
