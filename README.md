@@ -1,5 +1,14 @@
-# virtu
+# Virtu Química
 Desarrollo de herramienta digital educativa
+
+Esta copia ejecuta exclusivamente Virtu Química. Usa Expo desde la raíz del repositorio.
+La carpeta `mobile/` contiene la plantilla inicial de Expo Router y TypeScript.
+
+Q-10 arranca en `Login` con accesos de prueba a los inicios de estudiante y docente.
+Ambos llevan a Lecciones y Catálogo. Desde Catálogo se puede abrir la ficha provisional.
+La configuración central de la API está en `src/config/apiConfig.js`. Cuando se confirme
+la URL de integración, define `EXPO_PUBLIC_API_BASE_URL` en `.env.local` con la URL base
+pública del entorno. Las pantallas provisionales funcionan sin conexión a la API.
 
 Guía principal del proyecto: qué es Virtu, cómo levantarlo y cómo trabajamos entre equipos. Si nunca usaste React Native, sigue la [sección 5](#5-cómo-levantar-el-proyecto-paso-a-paso) paso a paso.
 
@@ -77,11 +86,11 @@ Los comandos son iguales en Windows, Mac y Linux.
 **1. Clona el repositorio y entra a la carpeta:**
 
 ```bash
-git clone https://github.com/CollabSW/virtu.git
+git clone https://github.com/ha55an-priv/virtu-quimica.git
 ```
 
 ```bash
-cd virtu
+cd virtu-quimica
 ```
 
 **2. Cámbiate a la rama de integración:**
@@ -123,7 +132,7 @@ Deja esa terminal abierta mientras trabajas. Aparecerá un código QR.
 - **Android:** desde la app Expo Go.
 - **iPhone:** con la cámara del celular.
 
-**7. Comprueba el resultado.** Si todo salió bien, verás una pantalla con la barra **Inicio** arriba y el texto **Virtu** en el centro.
+**7. Comprueba el resultado.** Verás **Virtu Química** y los dos accesos de prueba en la pantalla inicial.
 
 **8. Recarga la app cuando la necesites.** Tienes dos formas:
 
@@ -203,7 +212,7 @@ Para usarla, por ejemplo desde `src/navigation/`:
 import { HistoriaHomeScreen } from '../modules/historia';
 ```
 
-> **Nota:** las pantallas de las materias todavía no están conectadas a la navegación. Por ahora, la app solo muestra la pantalla provisional de `AppNavigator.jsx`.
+En esta copia, `AppNavigator.jsx` conecta únicamente las pantallas provisionales del módulo de Química.
 
 ## 8. Reglas de trabajo entre equipos
 
