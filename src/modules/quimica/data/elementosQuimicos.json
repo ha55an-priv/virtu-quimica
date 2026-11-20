@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "esquemaVersion": "1.0.0",
+    "version": "1.0.0",
+    "fechaActualizacion": "2026-11-20",
+    "origen": "Archivo local versionado en el repositorio. No proviene de un endpoint remoto ni del backend de la docente.",
+    "alcance": "Subconjunto inicial de 5 elementos. NO representa los 118 elementos.",
+    "completo": false,
+    "totalElementos": 5,
+    "procedencia": {
+      "nombre": "Nombre en español adoptado por el equipo (la tabla IUPAC consultada publica los nombres en inglés).",
+      "simbolo": "IUPAC Periodic Table of the Elements",
+      "numeroAtomico": "IUPAC Periodic Table of the Elements",
+      "clasificacion": "Asignación del equipo según los nombres de grupo de la tabla periódica convencional. No es un campo provisto por la tabla IUPAC consultada.",
+      "descripcion": "Redacción propia del equipo.",
+      "ejemploOpcional": "Redacción propia del equipo. Se omite cuando no existe un ejemplo real."
+    },
+    "fuenteIUPAC": {
+      "titulo": "IUPAC Periodic Table of the Elements",
+      "url": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+      "versionTabla": "2022-05-04"
+    },
+    "verificacion": {
+      "estado": "pendiente-contraste-manual",
+      "verificadoPor": null,
+      "fechaVerificacion": null,
+      "nota": "Contrastar nombre, símbolo y número atómico de cada elemento con la tabla IUPAC y completar estos campos."
+    }
+  },
+  "elementos": [
+    {
+      "id": "elem-001",
+      "nombre": "Hidrógeno",
+      "simbolo": "H",
+      "numeroAtomico": 1,
+      "clasificacion": "No metal",
+      "descripcion": "Elemento químico más ligero y abundante del universo; en condiciones estándar forma gas diatómico (H₂).",
+      "ejemploOpcional": "H₂O (agua)"
+    },
+    {
+      "id": "elem-002",
+      "nombre": "Helio",
+      "simbolo": "He",
+      "numeroAtomico": 2,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble incoloro, inodoro y monoatómico con el punto de ebullición más bajo entre los elementos."
+    },
+    {
+      "id": "elem-006",
+      "nombre": "Carbono",
+      "simbolo": "C",
+      "numeroAtomico": 6,
+      "clasificacion": "No metal",
+      "descripcion": "Elemento tetravalente base de la química orgánica, capaz de formar cadenas y enlaces estables.",
+      "ejemploOpcional": "CH₄ (metano)"
+    },
+    {
+      "id": "elem-008",
+      "nombre": "Oxígeno",
+      "simbolo": "O",
+      "numeroAtomico": 8,
+      "clasificacion": "No metal",
+      "descripcion": "Elemento altamente reactivo del grupo de los calcógenos; esencial en respiración celular y combustión.",
+      "ejemploOpcional": "O₂ / CO₂"
+    },
+    {
+      "id": "elem-011",
+      "nombre": "Sodio",
+      "simbolo": "Na",
+      "numeroAtomico": 11,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino blando y plateado muy reactivo con el agua; forma sales comunes en compuestos iónicos.",
+      "ejemploOpcional": "NaCl (cloruro de sodio)"
+    }
+  ]
+}
