@@ -2,6 +2,17 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, typography } from '../../config/theme';
 
+export const APP_SLUG = 'quimica';
+
+export {
+  CatalogoScreen,
+  FichaElementoScreen,
+  InicioDocenteScreen,
+  InicioEstudianteScreen,
+  LeccionesScreen,
+  LoginScreen,
+} from './screens/PlaceholderScreens';
+
 export function QuimicaHomeScreen() {
   return (
     <View style={styles.container}>
