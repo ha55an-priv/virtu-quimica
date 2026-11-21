@@ -13,11 +13,11 @@ export {
 
 export {
   CatalogoScreen,
-  FichaElementoScreen,
   InicioDocenteScreen,
   InicioEstudianteScreen,
 } from './screens/PlaceholderScreens';
 
+export { default as FichaElementoScreen, default as FichaElemento } from './screens/FichaElementoScreen';
 export { default as UnidadesLeccionesScreen } from './screens/UnidadesLeccionesScreen';
 
 export function QuimicaHomeScreen() {
