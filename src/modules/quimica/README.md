@@ -113,3 +113,11 @@ duplicación cuando un registro coincide por ambos campos.
 
 RF-Q-04 deja definidos los criterios. La comprobación con datos reales y la implementación
 posterior del buscador requieren resolver la dependencia anterior.
+
+## 5. RF-Q-05 — Implementación del buscador
+
+El filtro, sus pruebas unitarias y el campo controlado están disponibles. La conexión visual
+queda pendiente de integrar RF-Q-02; el catálogo continúa siendo provisional en esta base.
+Consultar la [guía de uso, contratos y dependencias de RF-Q-05](docs/RF-Q-05-buscador-elementos.md).
+El estado de la sección 1 corresponde a la revisión original de RF-Q-04; la guía enlazada
+registra la revisión posterior de las tareas de catálogo, sin dar sus cambios por integrados.
