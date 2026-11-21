@@ -1,5 +1,67 @@
-# virtu
+# Virtu Química
 Desarrollo de herramienta digital educativa
+
+Esta copia ejecuta exclusivamente Virtu Química. Usa Expo desde la raíz del repositorio.
+La carpeta `mobile/` contiene la plantilla inicial de Expo Router y TypeScript.
+
+Virtu Química arranca en `Login` cuando no hay una sesión guardada. El backend asigna el
+inicio de estudiante o docente. Ambos llevan a Lecciones y Catálogo. Desde Catálogo se
+puede abrir la ficha provisional.
+
+### Q-12 · Navegación de Química
+
+| Estado de sesión | Entrada | Rutas disponibles |
+|---|---|---|
+| Sin sesión | `Login` | `Login` |
+| `ESTUDIANTE` | `InicioEstudiante` | Su inicio, `UnidadesLecciones`, `Catalogo`, `FichaElemento` |
+| `DOCENTE` | `InicioDocente` | Su inicio, `UnidadesLecciones`, `Catalogo`, `FichaElemento` |
+
+Al restaurar una sesión válida se abre el inicio del rol confirmado por el backend.
+Cada inicio permite abrir **Lecciones** o **Catálogo**. La flecha del navegador devuelve
+de la ficha al catálogo. **Salir** elimina la sesión y vuelve al formulario con una pila nueva.
+
+Los nombres compartidos están en `src/modules/quimica/routes.js`. Para integrar las
+pantallas de Randall, registra las implementaciones de `UnidadesLecciones` y `Catalogo`
+en las rutas existentes. Ambas se abren sin parámetros. Al seleccionar un elemento
+del catálogo, usa este contrato con la ficha de Eduardo:
+
+```js
+navigation.navigate(QUIMICA_ROUTES.fichaElemento, { elementoId: elemento.id });
+```
+
+La ficha real recibirá `route.params.elementoId` como cadena o número. El botón de
+catálogo provisional abre la ficha provisional sin parámetros, porque todavía no
+selecciona datos reales. La integración deberá reemplazar ese botón por la selección
+del catálogo junto con la pantalla real de ficha.
+
+### Q-11 · Autenticación
+
+Para el PR de Q-11, usa `development` como base de integración en este repositorio.
+
+Desde la raíz, ejecuta `npm ci` y `npm start`. Axios y Expo SecureStore ya están declarados.
+Para Android e iOS se usa la URL publicada por defecto. Para cambiar de entorno, define
+`EXPO_PUBLIC_API_BASE_URL` en `.env.local` con la URL base que incluye `/api` y reinicia Expo.
+
+El login envía `username` y `password` a `POST /auth/login`. La app guarda el JWT en
+SecureStore y, al reiniciar, consulta `GET /auth/me` con `Authorization: Bearer` para
+validarlo y recuperar el rol. El cierre de sesión elimina el token local. El backend
+en vivo devuelve `403` para un JWT inválido en `/auth/me`, aunque Swagger documenta
+`401`. La app acepta ambos códigos en esa ruta y mantiene el tratamiento de `401`
+en solicitudes autenticadas.
+
+Pruebas manuales en Expo Go con las cuentas de la sección de autenticación de
+[Swagger de Virtu](https://backend-virtu.onrender.com/docs/).
+
+1. Ingresa con la cuenta estudiante y comprueba que aparece **Inicio estudiante**.
+   Cierra la app y ábrela de nuevo. Debe restaurar el mismo inicio.
+2. Pulsa **Salir** y reinicia la app. Debe seguir en **Iniciar sesión**. Ingresa con
+   la cuenta docente y comprueba que aparece **Inicio docente**.
+3. Prueba una contraseña incorrecta. Debe aparecer un error y mantenerse el formulario.
+4. Con la app abierta en el formulario, corta la conexión e intenta ingresar. Vuelve
+   a conectarte y reintenta. Repite el corte al reiniciar con una sesión guardada
+   para comprobar la pantalla de reintento de restauración.
+5. Con un JWT expirado guardado, reinicia. El rechazo de `/auth/me` debe devolver al
+   formulario y eliminar la sesión guardada.
 
 Guía principal del proyecto: qué es Virtu, cómo levantarlo y cómo trabajamos entre equipos. Si nunca usaste React Native, sigue la [sección 5](#5-cómo-levantar-el-proyecto-paso-a-paso) paso a paso.
 
@@ -77,11 +139,11 @@ Los comandos son iguales en Windows, Mac y Linux.
 **1. Clona el repositorio y entra a la carpeta:**
 
 ```bash
-git clone https://github.com/CollabSW/virtu.git
+git clone https://github.com/ha55an-priv/virtu-quimica.git
 ```
 
 ```bash
-cd virtu
+cd virtu-quimica
 ```
 
 **2. Cámbiate a la rama de integración:**
@@ -123,7 +185,7 @@ Deja esa terminal abierta mientras trabajas. Aparecerá un código QR.
 - **Android:** desde la app Expo Go.
 - **iPhone:** con la cámara del celular.
 
-**7. Comprueba el resultado.** Si todo salió bien, verás una pantalla con la barra **Inicio** arriba y el texto **Virtu** en el centro.
+**7. Comprueba el resultado.** Verás **Virtu Química** y el formulario de inicio de sesión.
 
 **8. Recarga la app cuando la necesites.** Tienes dos formas:
 
@@ -203,7 +265,7 @@ Para usarla, por ejemplo desde `src/navigation/`:
 import { HistoriaHomeScreen } from '../modules/historia';
 ```
 
-> **Nota:** las pantallas de las materias todavía no están conectadas a la navegación. Por ahora, la app solo muestra la pantalla provisional de `AppNavigator.jsx`.
+En esta copia, `AppNavigator.jsx` conecta únicamente las pantallas provisionales del módulo de Química.
 
 ## 8. Reglas de trabajo entre equipos
 

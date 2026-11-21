@@ -2,6 +2,24 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, typography } from '../../config/theme';
 
+export const APP_SLUG = 'quimica';
+
+export {
+  CAMPOS_ELEMENTO,
+  esElementoValido,
+  normalizarElementoDesdeGlosario,
+  obtenerErroresElemento,
+} from './services/elementoContract';
+
+export {
+  CatalogoScreen,
+  FichaElementoScreen,
+  InicioDocenteScreen,
+  InicioEstudianteScreen,
+} from './screens/PlaceholderScreens';
+
+export { default as UnidadesLeccionesScreen } from './screens/UnidadesLeccionesScreen';
+
 export function QuimicaHomeScreen() {
   return (
     <View style={styles.container}>
