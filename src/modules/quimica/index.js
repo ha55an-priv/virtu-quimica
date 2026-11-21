@@ -5,6 +5,13 @@ import { colors, typography } from '../../config/theme';
 export const APP_SLUG = 'quimica';
 
 export {
+  CAMPOS_ELEMENTO,
+  esElementoValido,
+  normalizarElementoDesdeGlosario,
+  obtenerErroresElemento,
+} from './services/elementoContract';
+
+export {
   CatalogoScreen,
   FichaElementoScreen,
   InicioDocenteScreen,
