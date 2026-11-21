@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { brandColors, brandRadius } from '../../../config/brandTheme';
 import { spacing, typography } from '../../../config/theme';
@@ -9,8 +11,13 @@ import {
   EducationMessage,
   EducationScreen,
 } from '../../../shared/components/EducationLayout';
+import BuscadorElementos from '../components/BuscadorElementos';
+import ElementoCard from '../components/ElementoCard';
 import ChemistryIcon from '../components/ChemistryIcon';
+import { DATOS_PROVISIONALES, ELEMENTOS_PROVISIONALES } from '../data/elementosProvisionales';
 import { QUIMICA_ROUTES } from '../routes';
+import { notificarSeleccion, resolverElementos } from '../services/catalogoIntegration';
+import { filtrarElementos as filtrarElementosPorDefecto } from '../services/filtrarElementos';
 
 function InicioScreen({ navigation, nombreCompleto, docente = false }) {
   const nombre = typeof nombreCompleto === 'string' ? nombreCompleto.trim() : '';
@@ -71,25 +78,153 @@ export function UnidadesLeccionesScreen() {
   );
 }
 
-export function CatalogoScreen({ navigation }) {
+function mensajeError(error) {
+  if (typeof error === 'string') return error;
+  if (error?.message) return error.message;
+  return 'No se pudo cargar el catálogo.';
+}
+
+function MensajeSinCoincidencias() {
   return (
-    <EducationScreen>
-      <EducationHero
-        eyebrow="Tabla periódica"
-        title="Catálogo de elementos"
-        description="Un espacio para consultar los elementos químicos y sus propiedades."
-        illustration={<ChemistryIcon type="table" inHero />}
-      />
+    <EducationMessage
+      title="No se encontraron elementos"
+      description="Ajusta o limpia la búsqueda para ver el catálogo completo."
+      icon={<ChemistryIcon type="table" />}
+    />
+  );
+}
+
+function MensajeCatalogoVacio() {
+  return (
+    <EducationMessage
+      title="Catálogo vacío"
+      description="La fuente de datos no tiene elementos registrados."
+      icon={<ChemistryIcon type="table" />}
+    />
+  );
+}
+
+function EstadoCatalogoFallback({ loading, error, items, total, onRetry, children }) {
+  if (loading) {
+    return <EducationMessage title="Cargando catálogo" description="Obteniendo elementos…" />;
+  }
+  if (error) {
+    return (
       <EducationMessage
-        title="Catálogo en preparación"
-        description="El listado y la búsqueda estarán disponibles cuando se integre el catálogo."
-      />
-      <EducationAction
-        title="Abrir ficha provisional"
+        title="No se pudo cargar el catálogo"
+        description={mensajeError(error)}
         icon={<ChemistryIcon type="atom" />}
-        onPress={() => navigation.navigate(QUIMICA_ROUTES.fichaElemento)}
       />
-    </EducationScreen>
+    );
+  }
+  if (items.length === 0) {
+    return total > 0 ? <MensajeSinCoincidencias /> : <MensajeCatalogoVacio />;
+  }
+  return children;
+}
+
+/**
+ * Listado del catálogo (RF-Q-02).
+ *
+ * Contrato de props para integración:
+ * - `elementos`: array de objetos `{ id, nombre, simbolo, numeroAtomico, clasificacion?, descripcion? }`.
+ * - `consulta` + `filtrarElementos(elementos, consulta)`: por defecto usa el buscador real
+ *   de Rodrigo; se pueden sobrescribir para integrar otro proveedor.
+ * - `buscador`: nodo React o función `({ consulta, onConsultaChange }) => nodo`; por defecto
+ *   se renderiza `BuscadorElementos`, así que es usable desde el inicio de la app.
+ * - `EstadoCatalogo`: componente de Mateo con props `{ loading, error, items, onRetry, children }`.
+ * - `loading`, `error`, `onRetry`: estados de la fuente de datos.
+ * - `onSelectElement(elemento)`: callback prioritario; si no existe, usa `navigation`.
+ */
+export function CatalogoScreen({
+  navigation,
+  elementos = ELEMENTOS_PROVISIONALES,
+  consulta: consultaExterna,
+  filtrarElementos = filtrarElementosPorDefecto,
+  buscador,
+  onConsultaChange,
+  EstadoCatalogo,
+  loading = false,
+  error = null,
+  onRetry,
+  onSelectElement,
+}) {
+  const [consultaInterna, setConsultaInterna] = useState('');
+  const consulta = consultaExterna ?? consultaInterna;
+
+  const actualizarConsulta = (texto) => {
+    if (typeof onConsultaChange === 'function') {
+      onConsultaChange(texto);
+      return;
+    }
+    setConsultaInterna(texto);
+  };
+
+  const elementosFiltrados = useMemo(
+    () => resolverElementos(elementos, consulta, filtrarElementos),
+    [elementos, consulta, filtrarElementos],
+  );
+
+  const sinCoincidencias =
+    !loading && !error && elementos.length > 0 && elementosFiltrados.length === 0;
+
+  const seleccionar = (elemento) => {
+    notificarSeleccion(elemento, onSelectElement, navigation, QUIMICA_ROUTES.fichaElemento);
+  };
+
+  const buscadorNode =
+    typeof buscador === 'function'
+      ? buscador({ consulta, onConsultaChange: actualizarConsulta })
+      : (buscador ?? <BuscadorElementos value={consulta} onChangeText={actualizarConsulta} />);
+
+  const lista = (
+    <FlatList
+      data={elementosFiltrados}
+      keyExtractor={(item, index) => String(item?.id ?? `elemento-${index}`)}
+      renderItem={({ item }) => <ElementoCard elemento={item} onPress={() => seleccionar(item)} />}
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
+      style={styles.listArea}
+      contentContainerStyle={styles.list}
+      ListEmptyComponent={<MensajeSinCoincidencias />}
+    />
+  );
+
+  const contenido = sinCoincidencias ? (
+    <MensajeSinCoincidencias />
+  ) : EstadoCatalogo ? (
+    <EstadoCatalogo loading={loading} error={error} items={elementosFiltrados} onRetry={onRetry}>
+      {lista}
+    </EstadoCatalogo>
+  ) : (
+    <EstadoCatalogoFallback
+      loading={loading}
+      error={error}
+      items={elementosFiltrados}
+      total={elementos.length}
+      onRetry={onRetry}
+    >
+      {lista}
+    </EstadoCatalogoFallback>
+  );
+
+  return (
+    <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.screen}>
+      <View style={styles.header}>
+        <EducationHero
+          eyebrow="Tabla periódica"
+          title="Catálogo de elementos"
+          description="Selecciona un elemento para abrir su ficha."
+          illustration={<ChemistryIcon type="table" inHero />}
+        />
+        {buscadorNode}
+        {elementos === ELEMENTOS_PROVISIONALES && DATOS_PROVISIONALES ? (
+          <Text style={styles.notice}>
+            Datos provisionales: 1 registro verificado en la API. Pendiente de integrar Q-24.
+          </Text>
+        ) : null}
+      </View>
+      {contenido}
+    </SafeAreaView>
   );
 }
 
@@ -166,4 +301,28 @@ const styles = StyleSheet.create({
   },
   propertyLabel: { color: brandColors.text, fontSize: typography.body, fontWeight: '600' },
   pending: { color: brandColors.muted, fontSize: typography.body },
+  screen: { flex: 1, backgroundColor: brandColors.background },
+  header: {
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
+    paddingTop: spacing.lg,
+    paddingHorizontal: spacing.md,
+    gap: spacing.sm,
+  },
+  notice: {
+    color: brandColors.muted,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  listArea: { flex: 1 },
+  list: {
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.lg,
+  },
+  separator: { height: spacing.sm },
 });
