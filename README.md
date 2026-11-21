@@ -8,6 +8,32 @@ Virtu Química arranca en `Login` cuando no hay una sesión guardada. El backend
 inicio de estudiante o docente. Ambos llevan a Lecciones y Catálogo. Desde Catálogo se
 puede abrir la ficha provisional.
 
+### Q-12 · Navegación de Química
+
+| Estado de sesión | Entrada | Rutas disponibles |
+|---|---|---|
+| Sin sesión | `Login` | `Login` |
+| `ESTUDIANTE` | `InicioEstudiante` | Su inicio, `UnidadesLecciones`, `Catalogo`, `FichaElemento` |
+| `DOCENTE` | `InicioDocente` | Su inicio, `UnidadesLecciones`, `Catalogo`, `FichaElemento` |
+
+Al restaurar una sesión válida se abre el inicio del rol confirmado por el backend.
+Cada inicio permite abrir **Lecciones** o **Catálogo**. La flecha del navegador devuelve
+de la ficha al catálogo. **Salir** elimina la sesión y vuelve al formulario con una pila nueva.
+
+Los nombres compartidos están en `src/modules/quimica/routes.js`. Para integrar las
+pantallas de Randall, registra las implementaciones de `UnidadesLecciones` y `Catalogo`
+en las rutas existentes. Ambas se abren sin parámetros. Al seleccionar un elemento
+del catálogo, usa este contrato con la ficha de Eduardo:
+
+```js
+navigation.navigate(QUIMICA_ROUTES.fichaElemento, { elementoId: elemento.id });
+```
+
+La ficha real recibirá `route.params.elementoId` como cadena o número. El botón de
+catálogo provisional abre la ficha provisional sin parámetros, porque todavía no
+selecciona datos reales. La integración deberá reemplazar ese botón por la selección
+del catálogo junto con la pantalla real de ficha.
+
 ### Q-11 · Autenticación
 
 Para el PR de Q-11, usa `development` como base de integración en este repositorio.
