@@ -14,6 +14,7 @@ import {
 import BuscadorElementos from '../components/BuscadorElementos';
 import ElementoCard from '../components/ElementoCard';
 import ChemistryIcon from '../components/ChemistryIcon';
+import EstadoCatalogoPorDefecto from '../components/EstadoCatalogo';
 import { DATOS_PROVISIONALES, ELEMENTOS_PROVISIONALES } from '../data/elementosProvisionales';
 import { QUIMICA_ROUTES } from '../routes';
 import { notificarSeleccion, resolverElementos } from '../services/catalogoIntegration';
@@ -78,12 +79,6 @@ export function UnidadesLeccionesScreen() {
   );
 }
 
-function mensajeError(error) {
-  if (typeof error === 'string') return error;
-  if (error?.message) return error.message;
-  return 'No se pudo cargar el catálogo.';
-}
-
 function MensajeSinCoincidencias() {
   return (
     <EducationMessage
@@ -92,35 +87,6 @@ function MensajeSinCoincidencias() {
       icon={<ChemistryIcon type="table" />}
     />
   );
-}
-
-function MensajeCatalogoVacio() {
-  return (
-    <EducationMessage
-      title="Catálogo vacío"
-      description="La fuente de datos no tiene elementos registrados."
-      icon={<ChemistryIcon type="table" />}
-    />
-  );
-}
-
-function EstadoCatalogoFallback({ loading, error, items, total, onRetry, children }) {
-  if (loading) {
-    return <EducationMessage title="Cargando catálogo" description="Obteniendo elementos…" />;
-  }
-  if (error) {
-    return (
-      <EducationMessage
-        title="No se pudo cargar el catálogo"
-        description={mensajeError(error)}
-        icon={<ChemistryIcon type="atom" />}
-      />
-    );
-  }
-  if (items.length === 0) {
-    return total > 0 ? <MensajeSinCoincidencias /> : <MensajeCatalogoVacio />;
-  }
-  return children;
 }
 
 /**
@@ -132,7 +98,7 @@ function EstadoCatalogoFallback({ loading, error, items, total, onRetry, childre
  *   de Rodrigo; se pueden sobrescribir para integrar otro proveedor.
  * - `buscador`: nodo React o función `({ consulta, onConsultaChange }) => nodo`; por defecto
  *   se renderiza `BuscadorElementos`, así que es usable desde el inicio de la app.
- * - `EstadoCatalogo`: componente de Mateo con props `{ loading, error, items, onRetry, children }`.
+ * - `EstadoCatalogo`: por defecto usa el componente de RF-Q-03.
  * - `loading`, `error`, `onRetry`: estados de la fuente de datos.
  * - `onSelectElement(elemento)`: callback prioritario; si no existe, usa `navigation`.
  */
@@ -143,7 +109,7 @@ export function CatalogoScreen({
   filtrarElementos = filtrarElementosPorDefecto,
   buscador,
   onConsultaChange,
-  EstadoCatalogo,
+  EstadoCatalogo: EstadoCatalogoPersonalizado,
   loading = false,
   error = null,
   onRetry,
@@ -151,6 +117,7 @@ export function CatalogoScreen({
 }) {
   const [consultaInterna, setConsultaInterna] = useState('');
   const consulta = consultaExterna ?? consultaInterna;
+  const EstadoCatalogo = EstadoCatalogoPersonalizado || EstadoCatalogoPorDefecto;
 
   const actualizarConsulta = (texto) => {
     if (typeof onConsultaChange === 'function') {
@@ -164,9 +131,6 @@ export function CatalogoScreen({
     () => resolverElementos(elementos, consulta, filtrarElementos),
     [elementos, consulta, filtrarElementos],
   );
-
-  const sinCoincidencias =
-    !loading && !error && elementos.length > 0 && elementosFiltrados.length === 0;
 
   const seleccionar = (elemento) => {
     notificarSeleccion(elemento, onSelectElement, navigation, QUIMICA_ROUTES.fichaElemento);
@@ -189,24 +153,6 @@ export function CatalogoScreen({
     />
   );
 
-  const contenido = sinCoincidencias ? (
-    <MensajeSinCoincidencias />
-  ) : EstadoCatalogo ? (
-    <EstadoCatalogo loading={loading} error={error} items={elementosFiltrados} onRetry={onRetry}>
-      {lista}
-    </EstadoCatalogo>
-  ) : (
-    <EstadoCatalogoFallback
-      loading={loading}
-      error={error}
-      items={elementosFiltrados}
-      total={elementos.length}
-      onRetry={onRetry}
-    >
-      {lista}
-    </EstadoCatalogoFallback>
-  );
-
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.screen}>
       <View style={styles.header}>
@@ -223,7 +169,9 @@ export function CatalogoScreen({
           </Text>
         ) : null}
       </View>
-      {contenido}
+      <EstadoCatalogo loading={loading} error={error} items={elementos} onRetry={onRetry}>
+        {lista}
+      </EstadoCatalogo>
     </SafeAreaView>
   );
 }

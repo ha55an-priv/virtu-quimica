@@ -8,18 +8,32 @@ const babel = require('@babel/core');
 
 // Ejecuta el componente real con JSX transformado y primitivas nativas aisladas.
 // No sustituye una prueba visual en Android/iOS.
-const filename = path.join(__dirname, '../components/EstadoCatalogo.js');
-const { code } = babel.transformSync(fs.readFileSync(filename, 'utf8'), {
-  filename,
-  babelrc: false,
-  configFile: false,
-  plugins: [
-    ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
-    '@babel/plugin-transform-modules-commonjs',
-  ],
-});
+function cargarModulo(relativePath, dependencies) {
+  const filename = path.join(__dirname, relativePath);
+  const { code } = babel.transformSync(fs.readFileSync(filename, 'utf8'), {
+    filename,
+    babelrc: false,
+    configFile: false,
+    plugins: [
+      ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
+      '@babel/plugin-transform-modules-commonjs',
+    ],
+  });
+  const sandbox = {
+    exports: {},
+    require: (name) => {
+      if (Object.hasOwn(dependencies, name)) return dependencies[name];
+      if (name === 'react/jsx-runtime') return require(name);
+      throw new Error(`Importación inesperada: ${name}`);
+    },
+  };
+  vm.runInNewContext(code, sandbox, { filename });
+  return sandbox.exports;
+}
+
 const native = {
   ActivityIndicator: 'ActivityIndicator',
+  FlatList: 'FlatList',
   Pressable: 'Pressable',
   Text: 'Text',
   View: 'View',
@@ -30,17 +44,10 @@ const theme = {
   spacing: { sm: 8, md: 16, lg: 24 },
   typography: { title: 24, body: 16 },
 };
-const sandbox = {
-  exports: {},
-  require: (name) => {
-    if (name === 'react-native') return native;
-    if (name === '../../../config/theme') return theme;
-    if (name === 'react/jsx-runtime') return require(name);
-    throw new Error(`Importación inesperada: ${name}`);
-  },
-};
-vm.runInNewContext(code, sandbox, { filename });
-const EstadoCatalogo = sandbox.exports.default;
+const EstadoCatalogo = cargarModulo('../components/EstadoCatalogo.js', {
+  'react-native': native,
+  '../../../config/theme': theme,
+}).default;
 const content = require('react/jsx-runtime').jsx('Text', { children: 'Listado real' });
 function nodes(tree) {
   if (tree == null || typeof tree !== 'object') return [];
@@ -122,4 +129,72 @@ test('prioridad: cargando > error > vacío > contenido', () => {
     EstadoCatalogo({ loading: false, error: null, items: [{}], children: content }),
     content,
   );
+});
+
+const { QUIMICA_ROUTES } = require('../routes.js');
+const { CatalogoScreen } = cargarModulo('../screens/PlaceholderScreens.jsx', {
+  react: { useState: (initial) => [initial, () => {}], useMemo: (calculate) => calculate() },
+  'react-native': native,
+  'react-native-safe-area-context': { SafeAreaView: 'SafeAreaView' },
+  '../../../config/brandTheme': { brandColors: {}, brandRadius: {} },
+  '../../../config/theme': theme,
+  '../../../shared/components/EducationLayout': {
+    EducationHero: 'EducationHero',
+    EducationMessage: 'EducationMessage',
+  },
+  '../components/BuscadorElementos': 'BuscadorElementos',
+  '../components/ElementoCard': 'ElementoCard',
+  '../components/ChemistryIcon': 'ChemistryIcon',
+  '../components/EstadoCatalogo': EstadoCatalogo,
+  '../data/elementosProvisionales': require('../data/elementosProvisionales.js'),
+  '../routes': { QUIMICA_ROUTES },
+  '../services/catalogoIntegration': require('../services/catalogoIntegration.js'),
+  '../services/filtrarElementos': require('../services/filtrarElementos.js'),
+});
+
+function estadoDePantalla(screen) {
+  const wrapper = nodes(screen).find((node) => node.type === EstadoCatalogo);
+  assert.ok(wrapper, 'La pantalla usa EstadoCatalogo por defecto');
+  return wrapper.type(wrapper.props);
+}
+
+test('catálogo vacío usa RF-Q-03 y conserva el buscador', () => {
+  const screen = CatalogoScreen({ elementos: [], consulta: 'O' });
+  assert.ok(nodes(screen).some((node) => node.type === 'BuscadorElementos'));
+  assert.deepEqual(texts(estadoDePantalla(screen)), ['No hay elementos químicos disponibles']);
+});
+
+test('RF-Q-05 conserva el listado, el mensaje sin coincidencias y la selección', () => {
+  const calls = [];
+  const navigation = { navigate: (...args) => calls.push(args) };
+  const lista = estadoDePantalla(CatalogoScreen({ consulta: 'oxigeno', navigation }));
+  assert.equal(lista.type, 'FlatList');
+  assert.equal(lista.props.data.length, 1);
+  const [item] = lista.props.data;
+  const card = lista.props.renderItem({ item });
+  assert.equal(card.type, 'ElementoCard');
+  card.props.onPress();
+  assert.equal(calls.length, 1);
+  const [ruta, parametros] = calls[0];
+  assert.equal(ruta, QUIMICA_ROUTES.fichaElemento);
+  assert.equal(parametros.elementoId, item.id);
+
+  const sinCoincidencias = estadoDePantalla(CatalogoScreen({ consulta: 'zz' }));
+  assert.equal(sinCoincidencias.type, 'FlatList');
+  assert.equal(sinCoincidencias.props.data.length, 0);
+  const mensaje = sinCoincidencias.props.ListEmptyComponent;
+  assert.equal(mensaje.type().props.title, 'No se encontraron elementos');
+});
+
+test('la pantalla delega carga, error y reintento al componente RF-Q-03', () => {
+  let intentos = 0;
+  const props = { elementos: [], error: 'Fuente indisponible', onRetry: () => intentos++ };
+  const carga = estadoDePantalla(CatalogoScreen({ ...props, loading: true }));
+  assert.ok(nodes(carga).some((node) => node.type === 'ActivityIndicator'));
+  assert.equal(button(carga), undefined);
+
+  const error = estadoDePantalla(CatalogoScreen(props));
+  assert.ok(texts(error).includes(props.error));
+  button(error).props.onPress();
+  assert.equal(intentos, 1);
 });
