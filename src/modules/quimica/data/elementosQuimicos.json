@@ -1,12 +1,12 @@
 {
   "metadata": {
     "esquemaVersion": "1.0.0",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "fechaActualizacion": "2026-11-20",
     "origen": "Archivo local versionado en el repositorio. No proviene de un endpoint remoto ni del backend de la docente.",
-    "alcance": "Subconjunto inicial de 5 elementos. NO representa los 118 elementos.",
+    "alcance": "Subconjunto inicial de 10 elementos. NO representa los 118 elementos.",
     "completo": false,
-    "totalElementos": 5,
+    "totalElementos": 10,
     "procedencia": {
       "nombre": "Nombre en español adoptado por el equipo (la tabla IUPAC consultada publica los nombres en inglés).",
       "simbolo": "IUPAC Periodic Table of the Elements",
@@ -46,6 +46,32 @@
       "descripcion": "Gas noble incoloro, inodoro y monoatómico con el punto de ebullición más bajo entre los elementos."
     },
     {
+      "id": "elem-003",
+      "nombre": "Litio",
+      "simbolo": "Li",
+      "numeroAtomico": 3,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino blando de color plateado y baja densidad, muy reactivo y usado en baterías recargables.",
+      "ejemploOpcional": "Li₂CO₃ (carbonato de litio)"
+    },
+    {
+      "id": "elem-004",
+      "nombre": "Berilio",
+      "simbolo": "Be",
+      "numeroAtomico": 4,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo ligero, rígido y de alto punto de fusión, empleado en aleaciones especiales."
+    },
+    {
+      "id": "elem-005",
+      "nombre": "Boro",
+      "simbolo": "B",
+      "numeroAtomico": 5,
+      "clasificacion": "Metaloide",
+      "descripcion": "Elemento metaloide con propiedades intermedias entre metales y no metales, presente en compuestos como el bórax.",
+      "ejemploOpcional": "H₃BO₃ (ácido bórico)"
+    },
+    {
       "id": "elem-006",
       "nombre": "Carbono",
       "simbolo": "C",
@@ -55,6 +81,15 @@
       "ejemploOpcional": "CH₄ (metano)"
     },
     {
+      "id": "elem-007",
+      "nombre": "Nitrógeno",
+      "simbolo": "N",
+      "numeroAtomico": 7,
+      "clasificacion": "No metal",
+      "descripcion": "Gas incoloro e inodoro que constituye la mayor parte del aire terrestre en forma de molécula N₂.",
+      "ejemploOpcional": "NH₃ (amoníaco)"
+    },
+    {
       "id": "elem-008",
       "nombre": "Oxígeno",
       "simbolo": "O",
@@ -62,6 +97,14 @@
       "clasificacion": "No metal",
       "descripcion": "Elemento altamente reactivo del grupo de los calcógenos; esencial en respiración celular y combustión.",
       "ejemploOpcional": "O₂ / CO₂"
+    },
+    {
+      "id": "elem-009",
+      "nombre": "Flúor",
+      "simbolo": "F",
+      "numeroAtomico": 9,
+      "clasificacion": "Halógeno",
+      "descripcion": "Elemento halógeno y el más electronegativo y reactivo de todos los elementos químicos."
     },
     {
       "id": "elem-011",
