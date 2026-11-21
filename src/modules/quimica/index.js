@@ -9,7 +9,7 @@ export {
   FichaElementoScreen,
   InicioDocenteScreen,
   InicioEstudianteScreen,
-  LeccionesScreen,
+  UnidadesLeccionesScreen,
 } from './screens/PlaceholderScreens';
 
 export function QuimicaHomeScreen() {
