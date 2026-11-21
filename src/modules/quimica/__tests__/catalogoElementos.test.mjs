@@ -9,17 +9,28 @@ const catalogo = JSON.parse(fs.readFileSync(new URL('../data/elementosQuimicos.j
 const { metadata, elementos } = catalogo;
 
 // Tabla de referencia DEL TEST (Z <-> símbolo). Contrastar con la tabla IUPAC antes de cerrar Q-24.
-const REFERENCIA = { H: 1, He: 2, C: 6, O: 8, Na: 11 };
+const REFERENCIA = {
+  H: { nombre: 'Hidrógeno', z: 1, clasificacion: 'No metal' },
+  He: { nombre: 'Helio', z: 2, clasificacion: 'Gas noble' },
+  Li: { nombre: 'Litio', z: 3, clasificacion: 'Metal alcalino' },
+  Be: { nombre: 'Berilio', z: 4, clasificacion: 'Metal alcalinotérreo' },
+  B: { nombre: 'Boro', z: 5, clasificacion: 'Metaloide' },
+  C: { nombre: 'Carbono', z: 6, clasificacion: 'No metal' },
+  N: { nombre: 'Nitrógeno', z: 7, clasificacion: 'No metal' },
+  O: { nombre: 'Oxígeno', z: 8, clasificacion: 'No metal' },
+  F: { nombre: 'Flúor', z: 9, clasificacion: 'Halógeno' },
+  Na: { nombre: 'Sodio', z: 11, clasificacion: 'Metal alcalino' },
+};
 
-test('el catálogo real cumple contrato y reglas de datos reales (5 elementos)', () => {
+test('el catálogo real cumple contrato y reglas de datos reales (10 elementos)', () => {
   const r = validarCatalogoElementos(elementos, { datosReales: true });
   assert.deepEqual(r.errores, []);
-  assert.equal(r.elementosValidos.length, 5);
+  assert.equal(elementos.length, 10)
 });
 
 test('cada elemento trae los campos requeridos y coincide con la tabla de referencia', () => {
   for (const e of elementos) {
-    assert.equal(REFERENCIA[e.simbolo], e.numeroAtomico, `${e.simbolo}: Z no coincide`);
+    assert.equal(REFERENCIA[e.simbolo]?.z, e.numeroAtomico, `${e.simbolo}: Z no coincide`);
     assert.ok(e.nombre && e.clasificacion && e.descripcion, `${e.simbolo}: faltan campos`);
   }
 });

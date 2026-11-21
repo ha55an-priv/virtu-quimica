@@ -12,11 +12,11 @@ export {
 } from './services/elementoContract';
 
 export {
-  CatalogoScreen,
   InicioDocenteScreen,
   InicioEstudianteScreen,
 } from './screens/PlaceholderScreens';
 
+export { default as CatalogoScreen } from './screens/CatalogoConFichaScreen';
 export { default as FichaElementoScreen, default as FichaElemento } from './screens/FichaElementoScreen';
 export { default as UnidadesLeccionesScreen } from './screens/UnidadesLeccionesScreen';
 
