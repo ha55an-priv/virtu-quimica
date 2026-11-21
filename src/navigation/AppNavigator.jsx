@@ -87,7 +87,6 @@ export default function AppNavigator() {
         headerTitleStyle: { fontWeight: '700' },
         headerShadowVisible: false,
         headerBackButtonDisplayMode: 'minimal',
-        statusBarStyle: 'dark',
         headerRight: () => (
           <Pressable
             accessibilityRole="button"
