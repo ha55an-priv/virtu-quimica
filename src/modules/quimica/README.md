@@ -1,3 +1,23 @@
+# Módulo Química
+
+Contratos y pantallas del módulo de Química del Sprint 1.
+
+- [Q-23 + RF-Q-01: matriz de API y contrato del catálogo](./docs/Q-23-RF-Q-01-contrato-api-catalogo.md)
+- [Implementación del contrato `ElementoQuimico`](./services/elementoContract.js)
+
+El tipo canónico del catálogo es `ElementoQuimico`:
+`{ id, nombre, simbolo, numeroAtomico, clasificacion?, descripcion? }`.
+`clasificacion` y `descripcion` son opcionales. El backend de la docente no entrega
+`descripcion`, por lo que se normaliza a `null` hasta que Q-24 defina la fuente local.
+
+Pruebas del contrato (sin dependencias nuevas ni cambios en `package.json`):
+
+```bash
+node src/modules/quimica/services/elementoContract.test.cjs
+```
+
+---
+
 # RF-Q-04 — Definir criterios de búsqueda
 
 Especificación del filtrado del catálogo de elementos de Virtu Química. Esta tarjeta define
@@ -121,3 +141,4 @@ queda pendiente de integrar RF-Q-02; el catálogo continúa siendo provisional e
 Consultar la [guía de uso, contratos y dependencias de RF-Q-05](docs/RF-Q-05-buscador-elementos.md).
 El estado de la sección 1 corresponde a la revisión original de RF-Q-04; la guía enlazada
 registra la revisión posterior de las tareas de catálogo, sin dar sus cambios por integrados.
+
