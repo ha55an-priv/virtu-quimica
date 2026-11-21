@@ -9,8 +9,9 @@ export {
   FichaElementoScreen,
   InicioDocenteScreen,
   InicioEstudianteScreen,
-  UnidadesLeccionesScreen,
 } from './screens/PlaceholderScreens';
+
+export { default as UnidadesLeccionesScreen } from './screens/UnidadesLeccionesScreen';
 
 export function QuimicaHomeScreen() {
   return (
