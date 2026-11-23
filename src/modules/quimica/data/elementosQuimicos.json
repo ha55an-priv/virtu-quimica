@@ -1,17 +1,17 @@
 {
   "metadata": {
     "esquemaVersion": "1.0.0",
-    "version": "1.1.0",
-    "fechaActualizacion": "2026-11-20",
+    "version": "1.2.0",
+    "fechaActualizacion": "2026-11-23",
     "origen": "Archivo local versionado en el repositorio. No proviene de un endpoint remoto ni del backend de la docente.",
-    "alcance": "Subconjunto inicial de 10 elementos. NO representa los 118 elementos.",
-    "completo": false,
-    "totalElementos": 10,
+    "alcance": "Catálogo completo de los 118 elementos químicos de la tabla periódica.",
+    "completo": true,
+    "totalElementos": 118,
     "procedencia": {
       "nombre": "Nombre en español adoptado por el equipo (la tabla IUPAC consultada publica los nombres en inglés).",
       "simbolo": "IUPAC Periodic Table of the Elements",
       "numeroAtomico": "IUPAC Periodic Table of the Elements",
-      "clasificacion": "Asignación del equipo según los nombres de grupo de la tabla periódica convencional. No es un campo provisto por la tabla IUPAC consultada.",
+      "clasificacion": "Asignación del equipo según los nombres de grupo o serie química de la tabla periódica convencional. No es un campo provisto por la tabla IUPAC consultada.",
       "descripcion": "Redacción propia del equipo.",
       "ejemploOpcional": "Redacción propia del equipo. Se omite cuando no existe un ejemplo real."
     },
@@ -104,7 +104,15 @@
       "simbolo": "F",
       "numeroAtomico": 9,
       "clasificacion": "Halógeno",
-      "descripcion": "Elemento halógeno y el más electronegativo y reactivo de todos los elementos químicos."
+      "descripcion": "Elemento halógeno de alta electronegatividad y reactividad química."
+    },
+    {
+      "id": "elem-010",
+      "nombre": "Neón",
+      "simbolo": "Ne",
+      "numeroAtomico": 10,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble incoloro que emite un resplandor rojizo-anaranjado al ser excitado en descargas eléctricas."
     },
     {
       "id": "elem-011",
@@ -114,6 +122,878 @@
       "clasificacion": "Metal alcalino",
       "descripcion": "Metal alcalino blando y plateado muy reactivo con el agua; forma sales comunes en compuestos iónicos.",
       "ejemploOpcional": "NaCl (cloruro de sodio)"
+    },
+    {
+      "id": "elem-012",
+      "nombre": "Magnesio",
+      "simbolo": "Mg",
+      "numeroAtomico": 12,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo ligero y blanco plateado, importante en aleaciones estructurales y procesos biológicos.",
+      "ejemploOpcional": "MgO (óxido de magnesio)"
+    },
+    {
+      "id": "elem-013",
+      "nombre": "Aluminio",
+      "simbolo": "Al",
+      "numeroAtomico": 13,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal ligero, dúctil y resistente a la corrosión gracias a una capa pasiva de óxido.",
+      "ejemploOpcional": "Al₂O₃ (alúmina)"
+    },
+    {
+      "id": "elem-014",
+      "nombre": "Silicio",
+      "simbolo": "Si",
+      "numeroAtomico": 14,
+      "clasificacion": "Metaloide",
+      "descripcion": "Metaloide semiconductor fundamental en electrónica y muy abundante en la corteza terrestre como sílice.",
+      "ejemploOpcional": "SiO₂ (dióxido de silicio)"
+    },
+    {
+      "id": "elem-015",
+      "nombre": "Fósforo",
+      "simbolo": "P",
+      "numeroAtomico": 15,
+      "clasificacion": "No metal",
+      "descripcion": "No metal multivalente esencial en sistemas biológicos, fertilizantes y compuestos inorgánicos.",
+      "ejemploOpcional": "H₃PO₄ (ácido fosfórico)"
+    },
+    {
+      "id": "elem-016",
+      "nombre": "Azufre",
+      "simbolo": "S",
+      "numeroAtomico": 16,
+      "clasificacion": "No metal",
+      "descripcion": "No metal sólido de color amarillo característico en condiciones normales, usado en química industrial.",
+      "ejemploOpcional": "H₂SO₄ (ácido sulfúrico)"
+    },
+    {
+      "id": "elem-017",
+      "nombre": "Cloro",
+      "simbolo": "Cl",
+      "numeroAtomico": 17,
+      "clasificacion": "Halógeno",
+      "descripcion": "Halógeno de color amarillo verdoso y olor penetrante, empleado en desinfección y síntesis química.",
+      "ejemploOpcional": "HCl (cloruro de hidrógeno)"
+    },
+    {
+      "id": "elem-018",
+      "nombre": "Argón",
+      "simbolo": "Ar",
+      "numeroAtomico": 18,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble inerte y tercer gas más abundante en la atmósfera terrestre, útil como atmósfera protectora."
+    },
+    {
+      "id": "elem-019",
+      "nombre": "Potasio",
+      "simbolo": "K",
+      "numeroAtomico": 19,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino blando y reactivo con el agua; sus sales son clave en fertilizantes y fisiología celular.",
+      "ejemploOpcional": "KCl (cloruro de potasio)"
+    },
+    {
+      "id": "elem-020",
+      "nombre": "Calcio",
+      "simbolo": "Ca",
+      "numeroAtomico": 20,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo abundante en minerales carbonatados y sulfatados y fundamental en tejidos óseos.",
+      "ejemploOpcional": "CaCO₃ (carbonato de calcio)"
+    },
+    {
+      "id": "elem-021",
+      "nombre": "Escandio",
+      "simbolo": "Sc",
+      "numeroAtomico": 21,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición blanco plateado que suele asociarse a minerales de tierras raras y aleaciones ligeras."
+    },
+    {
+      "id": "elem-022",
+      "nombre": "Titanio",
+      "simbolo": "Ti",
+      "numeroAtomico": 22,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición de alta resistencia mecánica, baja densidad y notable resistencia a la corrosión.",
+      "ejemploOpcional": "TiO₂ (dióxido de titanio)"
+    },
+    {
+      "id": "elem-023",
+      "nombre": "Vanadio",
+      "simbolo": "V",
+      "numeroAtomico": 23,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición dúctil y duro utilizado principalmente en aleaciones de acero de alta tenacidad."
+    },
+    {
+      "id": "elem-024",
+      "nombre": "Cromo",
+      "simbolo": "Cr",
+      "numeroAtomico": 24,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición duro y brillante, clave en aceros inoxidables y recubrimientos resistentes a la corrosión."
+    },
+    {
+      "id": "elem-025",
+      "nombre": "Manganeso",
+      "simbolo": "Mn",
+      "numeroAtomico": 25,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición con múltiples estados de oxidación, empleado en metalurgia y pilas.",
+      "ejemploOpcional": "MnO₂ (dióxido de manganeso)"
+    },
+    {
+      "id": "elem-026",
+      "nombre": "Hierro",
+      "simbolo": "Fe",
+      "numeroAtomico": 26,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición ferromagnético y base de los aceros, además de componente esencial de la hemoglobina.",
+      "ejemploOpcional": "Fe₂O₃ (óxido de hierro(III))"
+    },
+    {
+      "id": "elem-027",
+      "nombre": "Cobalto",
+      "simbolo": "Co",
+      "numeroAtomico": 27,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición ferromagnético duro, usado en superaleaciones, pigmentos y materiales para baterías."
+    },
+    {
+      "id": "elem-028",
+      "nombre": "Níquel",
+      "simbolo": "Ni",
+      "numeroAtomico": 28,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición plateado resistente a la oxidación, fundamental en aleaciones y catálisis."
+    },
+    {
+      "id": "elem-029",
+      "nombre": "Cobre",
+      "simbolo": "Cu",
+      "numeroAtomico": 29,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición de color rojizo con excelente conductividad eléctrica y térmica.",
+      "ejemploOpcional": "CuSO₄ (sulfato de cobre(II))"
+    },
+    {
+      "id": "elem-030",
+      "nombre": "Cinc",
+      "simbolo": "Zn",
+      "numeroAtomico": 30,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición utilizado ampliamente en galvanizado para proteger el acero frente a la corrosión.",
+      "ejemploOpcional": "ZnO (óxido de cinc)"
+    },
+    {
+      "id": "elem-031",
+      "nombre": "Galio",
+      "simbolo": "Ga",
+      "numeroAtomico": 31,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal blando con punto de fusión cercano a los 29.8 °C, empleado en semiconductores compuestos."
+    },
+    {
+      "id": "elem-032",
+      "nombre": "Germanio",
+      "simbolo": "Ge",
+      "numeroAtomico": 32,
+      "clasificacion": "Metaloide",
+      "descripcion": "Metaloide lustroso y quebradizo con propiedades semiconductoras, utilizado en óptica infrarroja y fibras."
+    },
+    {
+      "id": "elem-033",
+      "nombre": "Arsénico",
+      "simbolo": "As",
+      "numeroAtomico": 33,
+      "clasificacion": "Metaloide",
+      "descripcion": "Metaloide presente en minerales sulfurados y en ciertos compuestos semiconductores."
+    },
+    {
+      "id": "elem-034",
+      "nombre": "Selenio",
+      "simbolo": "Se",
+      "numeroAtomico": 34,
+      "clasificacion": "No metal",
+      "descripcion": "No metal del grupo de los calcógenos con propiedades fotoconductoras y relevancia bioquímica."
+    },
+    {
+      "id": "elem-035",
+      "nombre": "Bromo",
+      "simbolo": "Br",
+      "numeroAtomico": 35,
+      "clasificacion": "Halógeno",
+      "descripcion": "Halógeno que a temperatura ambiente se presenta como líquido denso de color rojo oscuro y vapores irritantes."
+    },
+    {
+      "id": "elem-036",
+      "nombre": "Kriptón",
+      "simbolo": "Kr",
+      "numeroAtomico": 36,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble pesado e incoloro empleado en ciertas lámparas de descarga e iluminación especializada."
+    },
+    {
+      "id": "elem-037",
+      "nombre": "Rubidio",
+      "simbolo": "Rb",
+      "numeroAtomico": 37,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino blando y altamente reactivo, utilizado en aplicaciones científicas y relojes atómicos."
+    },
+    {
+      "id": "elem-038",
+      "nombre": "Estroncio",
+      "simbolo": "Sr",
+      "numeroAtomico": 38,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo plateado y reactivo cuyas sales imparten tonalidades rojas a la llama."
+    },
+    {
+      "id": "elem-039",
+      "nombre": "Itrio",
+      "simbolo": "Y",
+      "numeroAtomico": 39,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición plateado frecuentemente asociado a los lantánidos en minerales y materiales ópticos."
+    },
+    {
+      "id": "elem-040",
+      "nombre": "Circonio",
+      "simbolo": "Zr",
+      "numeroAtomico": 40,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición resistente a la corrosión y con baja sección de captura de neutrones térmicos."
+    },
+    {
+      "id": "elem-041",
+      "nombre": "Niobio",
+      "simbolo": "Nb",
+      "numeroAtomico": 41,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición dúctil y refractario usado en aleaciones especiales y materiales superconductores."
+    },
+    {
+      "id": "elem-042",
+      "nombre": "Molibdeno",
+      "simbolo": "Mo",
+      "numeroAtomico": 42,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición de alto punto de fusión empleado para reforzar aleaciones de acero y en catálisis."
+    },
+    {
+      "id": "elem-043",
+      "nombre": "Tecnecio",
+      "simbolo": "Tc",
+      "numeroAtomico": 43,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición radiactivo cuyo isótopo metaestable ⁹⁹ᵐTc se emplea en diagnóstico médico por imagen."
+    },
+    {
+      "id": "elem-044",
+      "nombre": "Rutenio",
+      "simbolo": "Ru",
+      "numeroAtomico": 44,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición del grupo del platino, duro y empleado en contactos eléctricos y catalizadores."
+    },
+    {
+      "id": "elem-045",
+      "nombre": "Rodio",
+      "simbolo": "Rh",
+      "numeroAtomico": 45,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición blanco plateado y muy reflectante, utilizado en catalizadores y recubrimientos."
+    },
+    {
+      "id": "elem-046",
+      "nombre": "Paladio",
+      "simbolo": "Pd",
+      "numeroAtomico": 46,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición del grupo del platino con notable capacidad para absorber hidrógeno y actuar como catalizador."
+    },
+    {
+      "id": "elem-047",
+      "nombre": "Plata",
+      "simbolo": "Ag",
+      "numeroAtomico": 47,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición blanco brillante con la mayor conductividad eléctrica y térmica entre los elementos.",
+      "ejemploOpcional": "AgNO₃ (nitrato de plata)"
+    },
+    {
+      "id": "elem-048",
+      "nombre": "Cadmio",
+      "simbolo": "Cd",
+      "numeroAtomico": 48,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición blando y blanco azulado, empleado en recubrimientos y determinadas celdas electroquímicas."
+    },
+    {
+      "id": "elem-049",
+      "nombre": "Indio",
+      "simbolo": "In",
+      "numeroAtomico": 49,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal muy blando y maleable, utilizado en recubrimientos conductores transparentes y semiconductores."
+    },
+    {
+      "id": "elem-050",
+      "nombre": "Estaño",
+      "simbolo": "Sn",
+      "numeroAtomico": 50,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal maleable de color blanco plateado, tradicionalmente usado en soldaduras, recubrimientos y bronces."
+    },
+    {
+      "id": "elem-051",
+      "nombre": "Antimonio",
+      "simbolo": "Sb",
+      "numeroAtomico": 51,
+      "clasificacion": "Metaloide",
+      "descripcion": "Metaloide quebradizo y escamoso empleado en aleaciones, retardantes de llama y semiconductores."
+    },
+    {
+      "id": "elem-052",
+      "nombre": "Telurio",
+      "simbolo": "Te",
+      "numeroAtomico": 52,
+      "clasificacion": "Metaloide",
+      "descripcion": "Metaloide plateado y quebradizo del grupo de los calcógenos, usado en aleaciones y materiales termoeléctricos."
+    },
+    {
+      "id": "elem-053",
+      "nombre": "Yodo",
+      "simbolo": "I",
+      "numeroAtomico": 53,
+      "clasificacion": "Halógeno",
+      "descripcion": "Halógeno sólido de color violeta oscuro que sublima con facilidad y tiene relevancia biológica y analítica."
+    },
+    {
+      "id": "elem-054",
+      "nombre": "Xenón",
+      "simbolo": "Xe",
+      "numeroAtomico": 54,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble denso e incoloro empleado en lámparas de alta intensidad y propulsión iónica."
+    },
+    {
+      "id": "elem-055",
+      "nombre": "Cesio",
+      "simbolo": "Cs",
+      "numeroAtomico": 55,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino blando y muy reactivo, base de la definición estándar del segundo en relojes atómicos de cesio."
+    },
+    {
+      "id": "elem-056",
+      "nombre": "Bario",
+      "simbolo": "Ba",
+      "numeroAtomico": 56,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo blando y reactivo; su sulfato insoluble se emplea en lodos de perforación y radiología.",
+      "ejemploOpcional": "BaSO₄ (sulfato de bario)"
+    },
+    {
+      "id": "elem-057",
+      "nombre": "Lantano",
+      "simbolo": "La",
+      "numeroAtomico": 57,
+      "clasificacion": "Lantánido",
+      "descripcion": "Primer elemento de la serie de los lantánidos; metal dúctil y plateado usado en ópticas y aleaciones."
+    },
+    {
+      "id": "elem-058",
+      "nombre": "Cerio",
+      "simbolo": "Ce",
+      "numeroAtomico": 58,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido más abundante en la corteza terrestre, empleado en catalizadores, pulido óptico y aleaciones."
+    },
+    {
+      "id": "elem-059",
+      "nombre": "Praseodimio",
+      "simbolo": "Pr",
+      "numeroAtomico": 59,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido blando y plateado utilizado en aleaciones magnéticas, vidrios filtrantes y pigmentos."
+    },
+    {
+      "id": "elem-060",
+      "nombre": "Neodimio",
+      "simbolo": "Nd",
+      "numeroAtomico": 60,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido empleado en la fabricación de imanes permanentes de alta potencia y láseres de estado sólido."
+    },
+    {
+      "id": "elem-061",
+      "nombre": "Prometio",
+      "simbolo": "Pm",
+      "numeroAtomico": 61,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido radiactivo sin isótopos estables, estudiado en aplicaciones nucleares y fuentes de energía especializadas."
+    },
+    {
+      "id": "elem-062",
+      "nombre": "Samario",
+      "simbolo": "Sm",
+      "numeroAtomico": 62,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido de color blanco plateado utilizado en imanes de samario-cobalto y catálisis."
+    },
+    {
+      "id": "elem-063",
+      "nombre": "Europio",
+      "simbolo": "Eu",
+      "numeroAtomico": 63,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido reactivo apreciado por los compuestos luminiscentes que emiten luz roja o azul en pantallas y fósforos."
+    },
+    {
+      "id": "elem-064",
+      "nombre": "Gadolinio",
+      "simbolo": "Gd",
+      "numeroAtomico": 64,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido con propiedades paramagnéticas y ferromagnéticas cerca de temperatura ambiente y uso como contraste en RM."
+    },
+    {
+      "id": "elem-065",
+      "nombre": "Terbio",
+      "simbolo": "Tb",
+      "numeroAtomico": 65,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido plateado utilizado en fósforos verdes, dispositivos magnetoópticos y aleaciones."
+    },
+    {
+      "id": "elem-066",
+      "nombre": "Disprosio",
+      "simbolo": "Dy",
+      "numeroAtomico": 66,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido con elevada susceptibilidad magnética, empleado junto al neodimio en imanes resistentes a la temperatura."
+    },
+    {
+      "id": "elem-067",
+      "nombre": "Holmio",
+      "simbolo": "Ho",
+      "numeroAtomico": 67,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido con el mayor momento magnético entre los elementos naturales, usado en imanes y tecnología láser."
+    },
+    {
+      "id": "elem-068",
+      "nombre": "Erbio",
+      "simbolo": "Er",
+      "numeroAtomico": 68,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido empleado en amplificadores de fibra óptica para telecomunicaciones y en coloración de vidrios."
+    },
+    {
+      "id": "elem-069",
+      "nombre": "Tulio",
+      "simbolo": "Tm",
+      "numeroAtomico": 69,
+      "clasificacion": "Lantánido",
+      "descripcion": "Lantánido menos abundante de la serie, utilizado en fuentes portátiles de rayos X y láseres especializados."
+    },
+    {
+      "id": "elem-070",
+      "nombre": "Iterbio",
+      "simbolo": "Yb",
+      "numeroAtomico": 70,
+      "clasificacion": "Lantánido",
+      "descripcion": "Último elemento de la serie de los lantánidos; metal blando usado en aleaciones, láseres y relojes ópticos."
+    },
+    {
+      "id": "elem-071",
+      "nombre": "Lutecio",
+      "simbolo": "Lu",
+      "numeroAtomico": 71,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal denso y duro ubicado al cierre del bloque 4f/inicio del bloque d, usado en centelleadores y catálisis."
+    },
+    {
+      "id": "elem-072",
+      "nombre": "Hafnio",
+      "simbolo": "Hf",
+      "numeroAtomico": 72,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición refractario químicamente similar al circonio, usado en barras de control y microelectrónica."
+    },
+    {
+      "id": "elem-073",
+      "nombre": "Tantalio",
+      "simbolo": "Ta",
+      "numeroAtomico": 73,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición gris azulado, muy resistente a la corrosión y empleado en condensadores electrónicos."
+    },
+    {
+      "id": "elem-074",
+      "nombre": "Wolframio",
+      "simbolo": "W",
+      "numeroAtomico": 74,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición con el punto de fusión más alto entre los elementos puros, usado en herramientas y filamentos."
+    },
+    {
+      "id": "elem-075",
+      "nombre": "Renio",
+      "simbolo": "Re",
+      "numeroAtomico": 75,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición denso y refractario empleado en superaleaciones para turbinas y catalizadores."
+    },
+    {
+      "id": "elem-076",
+      "nombre": "Osmio",
+      "simbolo": "Os",
+      "numeroAtomico": 76,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición del grupo del platino con densidad extremadamente alta, usado en aleaciones de desgaste."
+    },
+    {
+      "id": "elem-077",
+      "nombre": "Iridio",
+      "simbolo": "Ir",
+      "numeroAtomico": 77,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición blanco plateado extraordinariamente resistente a la corrosión incluso a altas temperaturas."
+    },
+    {
+      "id": "elem-078",
+      "nombre": "Platino",
+      "simbolo": "Pt",
+      "numeroAtomico": 78,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal noble y dúctil de color blanco grisáceo, muy utilizado en catálisis química, joyería e instrumentación."
+    },
+    {
+      "id": "elem-079",
+      "nombre": "Oro",
+      "simbolo": "Au",
+      "numeroAtomico": 79,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal noble amarillo, maleable y resistente a la oxidación, con alta conductividad eléctrica y uso electrónico."
+    },
+    {
+      "id": "elem-080",
+      "nombre": "Mercurio",
+      "simbolo": "Hg",
+      "numeroAtomico": 80,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Metal de transición que en condiciones estándar es líquido plateado y forma amalgamas con otros metales."
+    },
+    {
+      "id": "elem-081",
+      "nombre": "Talio",
+      "simbolo": "Tl",
+      "numeroAtomico": 81,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal blando y maleable de color gris azulado, estudiado en compuestos electrónicos y ópticos especializados."
+    },
+    {
+      "id": "elem-082",
+      "nombre": "Plomo",
+      "simbolo": "Pb",
+      "numeroAtomico": 82,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal denso, blando y maleable con buena resistencia a la corrosión y blindaje frente a radiación ionizante.",
+      "ejemploOpcional": "PbS (galena)"
+    },
+    {
+      "id": "elem-083",
+      "nombre": "Bismuto",
+      "simbolo": "Bi",
+      "numeroAtomico": 83,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Metal postransicional pesado y diamagnético, empleado en aleaciones de bajo punto de fusión y cosmética/farmacia."
+    },
+    {
+      "id": "elem-084",
+      "nombre": "Polonio",
+      "simbolo": "Po",
+      "numeroAtomico": 84,
+      "clasificacion": "Metaloide",
+      "descripcion": "Elemento radiactivo raro del grupo de los calcógenos, descubierto por Marie y Pierre Curie."
+    },
+    {
+      "id": "elem-085",
+      "nombre": "Astato",
+      "simbolo": "At",
+      "numeroAtomico": 85,
+      "clasificacion": "Halógeno",
+      "descripcion": "Halógeno radiactivo extremadamente escaso en la naturaleza, con isótopos de vida media relativamente corta."
+    },
+    {
+      "id": "elem-086",
+      "nombre": "Radón",
+      "simbolo": "Rn",
+      "numeroAtomico": 86,
+      "clasificacion": "Gas noble",
+      "descripcion": "Gas noble radiactivo, incoloro e inodoro que se forma por desintegración radiactiva de elementos como el radio."
+    },
+    {
+      "id": "elem-087",
+      "nombre": "Francio",
+      "simbolo": "Fr",
+      "numeroAtomico": 87,
+      "clasificacion": "Metal alcalino",
+      "descripcion": "Metal alcalino altamente radiactivo e inestable, presente en cantidades ínfimas en minerales de uranio y torio."
+    },
+    {
+      "id": "elem-088",
+      "nombre": "Radio",
+      "simbolo": "Ra",
+      "numeroAtomico": 88,
+      "clasificacion": "Metal alcalinotérreo",
+      "descripcion": "Metal alcalinotérreo radiactivo de color blanco brillante que emite radiación intensa."
+    },
+    {
+      "id": "elem-089",
+      "nombre": "Actinio",
+      "simbolo": "Ac",
+      "numeroAtomico": 89,
+      "clasificacion": "Actínido",
+      "descripcion": "Primer elemento de la serie de los actínidos; metal radiactivo plateado que brilla en la oscuridad por ionización."
+    },
+    {
+      "id": "elem-090",
+      "nombre": "Torio",
+      "simbolo": "Th",
+      "numeroAtomico": 90,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido radiactivo de origen natural con relevancia como combustible fértil potencial en reactores nucleares."
+    },
+    {
+      "id": "elem-091",
+      "nombre": "Protactinio",
+      "simbolo": "Pa",
+      "numeroAtomico": 91,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido denso, plateado y radiactivo, escaso en la corteza terrestre y de interés en radioquímica."
+    },
+    {
+      "id": "elem-092",
+      "nombre": "Uranio",
+      "simbolo": "U",
+      "numeroAtomico": 92,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido radiactivo pesado utilizado como combustible en reactores nucleares mediante fisión del isótopo ²³⁵U."
+    },
+    {
+      "id": "elem-093",
+      "nombre": "Neptunio",
+      "simbolo": "Np",
+      "numeroAtomico": 93,
+      "clasificacion": "Actínido",
+      "descripcion": "Primer elemento transuránico de la serie de los actínidos, radiactivo y obtenido principalmente en reactores."
+    },
+    {
+      "id": "elem-094",
+      "nombre": "Plutonio",
+      "simbolo": "Pu",
+      "numeroAtomico": 94,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido radiactivo fisible empleado en energía nuclear y generadores termoeléctricos de radioisótopos."
+    },
+    {
+      "id": "elem-095",
+      "nombre": "Americio",
+      "simbolo": "Am",
+      "numeroAtomico": 95,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido sintético y radiactivo; el isótopo ²⁴¹Am se utiliza en detectores de humo de ionización."
+    },
+    {
+      "id": "elem-096",
+      "nombre": "Curio",
+      "simbolo": "Cm",
+      "numeroAtomico": 96,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido radiactivo duro y denso, nombrado en honor a Marie y Pierre Curie."
+    },
+    {
+      "id": "elem-097",
+      "nombre": "Berkelio",
+      "simbolo": "Bk",
+      "numeroAtomico": 97,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido sintético y radiactivo obtenido por bombardeo de isótopos más ligeros en instalaciones nucleares."
+    },
+    {
+      "id": "elem-098",
+      "nombre": "Californio",
+      "simbolo": "Cf",
+      "numeroAtomico": 98,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido radiactivo emisor de neutrones, utilizado como fuente neutrónica en análisis e industria."
+    },
+    {
+      "id": "elem-099",
+      "nombre": "Einstenio",
+      "simbolo": "Es",
+      "numeroAtomico": 99,
+      "clasificacion": "Actínido",
+      "descripcion": "Elemento sintético y radiactivo de la serie de los actínidos, nombrado en honor a Albert Einstein."
+    },
+    {
+      "id": "elem-100",
+      "nombre": "Fermio",
+      "simbolo": "Fm",
+      "numeroAtomico": 100,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido sintético y radiactivo descubierto en residuos de pruebas termonucleares, nombrado por Enrico Fermi."
+    },
+    {
+      "id": "elem-101",
+      "nombre": "Mendelevio",
+      "simbolo": "Md",
+      "numeroAtomico": 101,
+      "clasificacion": "Actínido",
+      "descripcion": "Actínido sintético y radiactivo nombrado en honor a Dmitri Mendeléyev, creador de la tabla periódica."
+    },
+    {
+      "id": "elem-102",
+      "nombre": "Nobelio",
+      "simbolo": "No",
+      "numeroAtomico": 102,
+      "clasificacion": "Actínido",
+      "descripcion": "Último elemento de la serie de los actínidos; sintético, radiactivo y nombrado en honor a Alfred Nobel."
+    },
+    {
+      "id": "elem-103",
+      "nombre": "Laurencio",
+      "simbolo": "Lr",
+      "numeroAtomico": 103,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético y radiactivo ubicado al cierre de la fila de los actínidos, nombrado por Ernest Lawrence."
+    },
+    {
+      "id": "elem-104",
+      "nombre": "Rutherfordio",
+      "simbolo": "Rf",
+      "numeroAtomico": 104,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento superpesado, sintético y altamente radiactivo, el primero de la serie de los elementos transactínidos."
+    },
+    {
+      "id": "elem-105",
+      "nombre": "Dubnio",
+      "simbolo": "Db",
+      "numeroAtomico": 105,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento químico sintético, superpesado y radiactivo con isótopos de vida media muy breve."
+    },
+    {
+      "id": "elem-106",
+      "nombre": "Seaborgio",
+      "simbolo": "Sg",
+      "numeroAtomico": 106,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético y radiactivo nombrado en honor a Glenn T. Seaborg."
+    },
+    {
+      "id": "elem-107",
+      "nombre": "Bohrio",
+      "simbolo": "Bh",
+      "numeroAtomico": 107,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético, superpesado y radiactivo nombrado en honor al físico Niels Bohr."
+    },
+    {
+      "id": "elem-108",
+      "nombre": "Hasio",
+      "simbolo": "Hs",
+      "numeroAtomico": 108,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético y radiactivo cuyo comportamiento químico esperado se asocia al grupo del osmio."
+    },
+    {
+      "id": "elem-109",
+      "nombre": "Meitnerio",
+      "simbolo": "Mt",
+      "numeroAtomico": 109,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético, superpesado y radiactivo nombrado en honor a la física Lise Meitner."
+    },
+    {
+      "id": "elem-110",
+      "nombre": "Darmstatio",
+      "simbolo": "Ds",
+      "numeroAtomico": 110,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento químico sintético y altamente radiactivo producido en aceleradores de partículas."
+    },
+    {
+      "id": "elem-111",
+      "nombre": "Roentgenio",
+      "simbolo": "Rg",
+      "numeroAtomico": 111,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético y radiactivo nombrado en honor a Wilhelm Conrad Röntgen."
+    },
+    {
+      "id": "elem-112",
+      "nombre": "Copernicio",
+      "simbolo": "Cn",
+      "numeroAtomico": 112,
+      "clasificacion": "Metal de transición",
+      "descripcion": "Elemento sintético, superpesado y radiactivo nombrado en honor a Nicolás Copérnico."
+    },
+    {
+      "id": "elem-113",
+      "nombre": "Nihonio",
+      "simbolo": "Nh",
+      "numeroAtomico": 113,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Elemento sintético y radiactivo ubicado en el grupo 13; el primero descubierto en Asia (Japón)."
+    },
+    {
+      "id": "elem-114",
+      "nombre": "Flerovio",
+      "simbolo": "Fl",
+      "numeroAtomico": 114,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Elemento superpesado, sintético y radiactivo del grupo 14 con propiedades relativistas marcadas."
+    },
+    {
+      "id": "elem-115",
+      "nombre": "Moscovio",
+      "simbolo": "Mc",
+      "numeroAtomico": 115,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Elemento sintético, superpesado y radiactivo del grupo 15 obtenido mediante reacciones de fusión nuclear."
+    },
+    {
+      "id": "elem-116",
+      "nombre": "Livermorio",
+      "simbolo": "Lv",
+      "numeroAtomico": 116,
+      "clasificacion": "Metal del bloque p",
+      "descripcion": "Elemento sintético, superpesado y radiactivo del grupo 16 con isótopos de vida corta."
+    },
+    {
+      "id": "elem-117",
+      "nombre": "Tenesino",
+      "simbolo": "Ts",
+      "numeroAtomico": 117,
+      "clasificacion": "Halógeno",
+      "descripcion": "Elemento superpesado, sintético y radiactivo ubicado en el grupo 17 de la tabla periódica."
+    },
+    {
+      "id": "elem-118",
+      "nombre": "Oganesón",
+      "simbolo": "Og",
+      "numeroAtomico": 118,
+      "clasificacion": "Gas noble",
+      "descripcion": "Elemento más pesado conocido hasta ahora en la tabla periódica; sintético, radiactivo y del grupo 18."
     }
   ]
-}
+} 
